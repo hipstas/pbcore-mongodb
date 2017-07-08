@@ -1,0 +1,12 @@
+version: '2'
+services:
+    web:
+        build: .
+        stdin_open: true
+        tty: true
+        ports:
+            - "3805:3805"
+        depends_on:
+            - mongo
+    mongo:
+        image: mongo:3.4.0

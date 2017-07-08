@@ -1,0 +1,78 @@
+.search {
+	FONT-WEIGHT: normal; FONT-SIZE: 75%; COLOR: #000; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif
+}
+.text {
+	FONT-WEIGHT: normal; FONT-SIZE: 78%; COLOR: #000; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif
+}
+TD {
+	FONT-WEIGHT: normal; FONT-SIZE: 12px; COLOR: #000; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif
+}
+.letters {
+	FONT-WEIGHT: normal; COLOR: #666666
+}
+.header {
+	FONT-WEIGHT: bold; FONT-SIZE: 110%; COLOR: #000
+}
+.smallText {
+	FONT-WEIGHT: normal; FONT-SIZE: 90%; COLOR: #000; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif
+}
+.bcrumbHeader {
+	FONT-WEIGHT: bold; COLOR: #666666; font-color: #cccccc
+}
+.textBold {
+	FONT-WEIGHT: bold; FONT-SIZE: 12px; COLOR: #000; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif
+}
+.linkBold {
+	FONT-WEIGHT: bold; COLOR: #2d2a62; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif
+}
+.navLink {
+	COLOR: #fff; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; TEXT-DECORATION: none
+}
+.navLink2 {
+	COLOR: #2d2a62; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; TEXT-DECORATION: none
+}
+A {
+	COLOR: #2d2a62; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif
+}
+.helpLinks {
+	COLOR: #2d2a62; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif
+}
+.helpQa {
+	COLOR: #2d2a62; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif
+}
+.greyLink {
+	COLOR: #666666; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif
+}
+.footer {
+	FONT-SIZE: 11px; COLOR: #fff; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif
+}
+.headerTop {
+	FONT-SIZE: 11px; COLOR: #fff; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif
+}
+.linkFooter {
+	FONT-SIZE: 11px; COLOR: #fff; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; TEXT-DECORATION: underline
+}
+.linkHeader {
+	FONT-SIZE: 11px; COLOR: #fff; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; TEXT-DECORATION: underline
+}
+.headline {
+	FONT-WEIGHT: bold
+}
+.catgr {
+	FONT-WEIGHT: bold; COLOR: #666666
+}
+.topmenu {
+	FONT-SIZE: 90%; COLOR: #000000
+}
+.sideheadline {
+	FONT-SIZE: 90%
+}
+.byline {
+	FONT-STYLE: italic
+}
+.caption {
+	FONT-STYLE: italic
+}
+.storyhl {
+	FONT-WEIGHT: bold
+}
