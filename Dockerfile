@@ -4,6 +4,7 @@ FROM ubuntu:14.04
 MAINTAINER Steve McLaughlin <stephen.mclaughlin@utexas.edu>
 
 EXPOSE 8881
+EXPOSE 27017
 
 ENV SHELL /bin/bash
 ENV PYTHONWARNINGS="ignore:a true SSLContext object"
@@ -29,12 +30,8 @@ COPY ./setup.sh /var/local/
 COPY ./requirements.txt /var/local/
 RUN pip install -qr /var/local/requirements.txt
 
-RUN mkdir -p /home/pbcore-mongodb-data/
-COPY ./AAPB_Metadata_1.zip /home/pbcore-mongodb-data/
-COPY ./AAPB_Metadata_2.zip /home/pbcore-mongodb-data/
-
-RUN mkdir -p /home/static/
-COPY ./static/ /home/static/
+#RUN mkdir -p /home/static/
+#COPY ./static/ /home/static/
 
 #RUN mkdir -p /home/templates/
 #COPY ./templates/ /home/templates/
@@ -43,10 +40,6 @@ COPY ./static/ /home/static/
 #COPY ./wsgi.py /home/
 COPY ./load_metadata_db.py /home/
 
-# Install FFmpeg with mp3 support
-#RUN add-apt-repository -y ppa:mc3man/trusty-media \
-# && apt-get update -y \
-# && apt-get install -y ffmpeg gstreamer0.10-ffmpeg
 
 WORKDIR /home/
-CMD ["bash","/var/local/setup.sh"]
+#CMD ["bash","/var/local/setup.sh"]
