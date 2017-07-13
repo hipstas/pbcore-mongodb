@@ -29,6 +29,10 @@ COPY ./setup.sh /var/local/
 COPY ./requirements.txt /var/local/
 RUN pip install -qr /var/local/requirements.txt
 
+RUN mkdir -p /home/pbcore-mongodb-data/
+COPY ./AAPB_Metadata_1.zip /home/pbcore-mongodb-data/
+COPY ./AAPB_Metadata_2.zip /home/pbcore-mongodb-data/
+
 RUN mkdir -p /home/static/
 COPY ./static/ /home/static/
 
