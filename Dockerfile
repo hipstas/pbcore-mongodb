@@ -36,11 +36,11 @@ COPY ./AAPB_Metadata_2.zip /home/pbcore-mongodb-data/
 RUN mkdir -p /home/static/
 COPY ./static/ /home/static/
 
-RUN mkdir -p /home/templates/
-COPY ./templates/ /home/templates/
+#RUN mkdir -p /home/templates/
+#COPY ./templates/ /home/templates/
 
-COPY ./app.py /home/
-COPY ./wsgi.py /home/
+#COPY ./app.py /home/
+#COPY ./wsgi.py /home/
 COPY ./load_metadata_db.py /home/
 
 # Install FFmpeg with mp3 support
@@ -49,4 +49,4 @@ COPY ./load_metadata_db.py /home/
 # && apt-get install -y ffmpeg gstreamer0.10-ffmpeg
 
 WORKDIR /home/
-#CMD ["bash","/var/local/setup.sh"]
+CMD ["bash","/var/local/setup.sh"]
