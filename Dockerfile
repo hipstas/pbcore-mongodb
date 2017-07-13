@@ -29,9 +29,6 @@ COPY ./setup.sh /var/local/
 COPY ./requirements.txt /var/local/
 RUN pip install -qr /var/local/requirements.txt
 
-RUN mkdir -p /home/PennSound_pages/
-COPY ./PennSound_pages/ /home/PennSound_pages/
-
 RUN mkdir -p /home/static/
 COPY ./static/ /home/static/
 
