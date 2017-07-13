@@ -6,3 +6,4 @@ Jinja2
 unicodecsv
 tabulate
 prettytable
+xmltodict
