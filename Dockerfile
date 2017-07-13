@@ -19,7 +19,6 @@ wget \
 git \
 unzip \
 dpkg \
-gunicorn \
 libxml2-dev \
 libxslt1-dev \
 libssl-dev \

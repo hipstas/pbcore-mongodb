@@ -1,9 +1,7 @@
-flask
+#flask
 pymongo
-markdown
+#markdown
 setuptools
-Jinja2
+#Jinja2
 unicodecsv
-tabulate
-prettytable
 xmltodict
