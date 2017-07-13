@@ -3,7 +3,7 @@ FROM ubuntu:14.04
 
 MAINTAINER Steve McLaughlin <stephen.mclaughlin@utexas.edu>
 
-EXPOSE 3805
+EXPOSE 8881
 
 ENV SHELL /bin/bash
 ENV PYTHONWARNINGS="ignore:a true SSLContext object"
@@ -38,7 +38,6 @@ COPY ./static/ /home/static/
 RUN mkdir -p /home/templates/
 COPY ./templates/ /home/templates/
 
-COPY ./PennSound_metadata.csv /home/
 COPY ./app.py /home/
 COPY ./wsgi.py /home/
 COPY ./load_metadata_db.py /home/
@@ -49,4 +48,4 @@ COPY ./load_metadata_db.py /home/
 # && apt-get install -y ffmpeg gstreamer0.10-ffmpeg
 
 WORKDIR /home/
-CMD ["bash","/var/local/setup.sh"]
+#CMD ["bash","/var/local/setup.sh"]
