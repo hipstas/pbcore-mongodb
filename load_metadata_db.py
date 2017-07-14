@@ -39,8 +39,10 @@ import timeit
 tic=timeit.default_timer()
 
 
-def merge_dicts(list_of_dicts,item):
+def merge_dicts(list_of_dicts,parent):
     result = {}
+    if (type(list_of_dicts)==str)|(type(list_of_dicts)==unicode):
+        return list_of_dicts
     if type(list_of_dicts)==dict:
         list_of_dicts = [list_of_dicts]
     if type(list_of_dicts)==None:
@@ -54,26 +56,36 @@ def merge_dicts(list_of_dicts,item):
     for d in list_of_dicts:
         if type(d)==dict:
             keys = [item for item in d]
+            found_at=False
             for key in keys:
                 if key[0]=="@":
+                    found_at=True
                     try:
-                        result.update({d[key].replace('.','<<dot>>'): d["#text"]})
+                        result.update({d[key].replace('.','<<dot>>').replace("http://americanarchiveinventory.org", "aapb_uuid"): d["#text"]})
                     except:
                         print("Guessing classes didn't work for "+str(d))
+            if found_at==False:
+                d_temp={}
+                for key in keys:
+                    d_temp[key]=merge_dicts(d[key],key)
+                    result.update(d_temp)
         elif (type(d)==str)|(type(d)==unicode):
-            result.update({item: d})
+            result.update({parent: d})
         elif (type(d)==None):
             foo="great"
         else:
             print('*&^*')
-            print(str(item)+'.'+str(d)+" is not a dict")
+            print(str(parent)+'.'+str(d)+" is not a dict")
     return result
 
 
-db.metadata.drop()
 
-for xml_path in pbcore_paths: #### undo this
-    json_text=''
+import random
+
+db.metadata.drop()
+sample_paths=random.sample(pbcore_paths,100)
+
+for xml_path in sample_paths: #### undo this
     json_data = xmltodict.parse(open(xml_path).read())
     json_text = json.dumps(json_data['pbcoreDescriptionDocument'])
     data = json_util.loads(json_text)
@@ -86,7 +98,7 @@ for xml_path in pbcore_paths: #### undo this
                     #print(item)
                     list_of_dicts=data[item]
                     if list_of_dicts != None:
-                        merged_dicts.update({item.replace('.','<<dot>>'):merge_dicts(list_of_dicts,item)})
+                        merged_dicts.update({item.replace('.','<<dot>>').replace("http://americanarchiveinventory.org", "aapb_uuid"):merge_dicts(list_of_dicts,item)})
         merged_dicts.update({"full_text_lower":str(json_text).lower()})
         temp = json.dumps(merged_dicts)
         temp = json_util.loads(temp)
@@ -94,7 +106,8 @@ for xml_path in pbcore_paths: #### undo this
     except Exception as e:
         print(e)
 
-#print(db.metadata.find()[0])
+from pprint import pprint
+pprint(db.metadata.find()[0])
 
 
 print("Completed loading database in "+str(timeit.default_timer() - tic)+" seconds")
@@ -108,7 +121,7 @@ search_term='niversity'
 
 search_term=search_term.lower()
 for item in db.metadata.find({ 'pbcoreAnnotation.organization' : {'$regex':'.*'+search_term+'.*'}}):
-    print(item)
+    #print(item)
     temp_items.append(item)
 
 len(temp_items)
