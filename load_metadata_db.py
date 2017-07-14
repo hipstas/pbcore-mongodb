@@ -51,8 +51,7 @@ def merge_dicts(list_of_dicts,parent):
         if len(list_of_dicts)==0:
             return result
     except:
-        print "&&&&&&&&&"
-        print(list_of_dicts)
+        return result
     for d in list_of_dicts:
         if type(d)==dict:
             keys = [item for item in d]
@@ -61,9 +60,19 @@ def merge_dicts(list_of_dicts,parent):
                 if key[0]=="@":
                     found_at=True
                     try:
-                        result.update({d[key].replace('.','<<dot>>').replace("http://americanarchiveinventory.org", "aapb_uuid"): d["#text"]})
+                        result.update({d[key].replace("http://americanarchiveinventory.org", "aapb_uuid").replace('.','<<dot>>'): d["#text"]})
                     except:
-                        print("Guessing classes didn't work for "+str(d))
+                        if len(d[key])==2:
+                            if d[key][0]=="@":
+                                result.update({d[key[0]].replace("http://americanarchiveinventory.org", "aapb_uuid").replace('.','<<dot>>'): d[key[1]]})
+                                found_at=True
+                            elif d[key][1]=="@":
+                                result.update({d[key[1]].replace("http://americanarchiveinventory.org", "aapb_uuid").replace('.','<<dot>>'): d[key[0]]})
+                                found_at=True
+                            else:
+                                print("No @ present"+str(d))
+                        else:
+                            print("No #text and more than 2 classes "+str(d))
             if found_at==False:
                 d_temp={}
                 for key in keys:
@@ -98,7 +107,7 @@ for xml_path in sample_paths: #### undo this
                     #print(item)
                     list_of_dicts=data[item]
                     if list_of_dicts != None:
-                        merged_dicts.update({item.replace('.','<<dot>>').replace("http://americanarchiveinventory.org", "aapb_uuid"):merge_dicts(list_of_dicts,item)})
+                        merged_dicts.update({item.replace("http://americanarchiveinventory.org", "aapb_uuid").replace('.','<<dot>>'):merge_dicts(list_of_dicts,item)})
         merged_dicts.update({"full_text_lower":str(json_text).lower()})
         temp = json.dumps(merged_dicts)
         temp = json_util.loads(temp)
@@ -106,8 +115,8 @@ for xml_path in sample_paths: #### undo this
     except Exception as e:
         print(e)
 
-from pprint import pprint
-pprint(db.metadata.find()[0])
+#from pprint import pprint
+#pprint(db.metadata.find()[0])
 
 
 print("Completed loading database in "+str(timeit.default_timer() - tic)+" seconds")
@@ -141,6 +150,10 @@ len(temp_items)
 #len(temp_items)
 
 
+###############
+
+## Audio filename
+#db.metadata.find()[10]['pbcoreInstantiation']['instantiationIdentifier']['mediainfo']
 
 
 
@@ -153,10 +166,3 @@ len(temp_items)
 #    ],
 #    name="search_index"
 #)
-
-
-
-
-#SEARCH_LIMIT=1000
-#query=search_term
-#text_results = db.command('text', metadata, search=query, limit=SEARCH_LIMIT)
