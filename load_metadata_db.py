@@ -72,7 +72,7 @@ def merge_dicts(list_of_dicts,item):
 
 db.metadata.drop()
 
-for xml_path in random.sample(pbcore_paths,2000): #### undo this
+for xml_path in pbcore_paths: #### undo this
     json_text=''
     json_data = xmltodict.parse(open(xml_path).read())
     json_text = json.dumps(json_data['pbcoreDescriptionDocument'])
@@ -116,34 +116,34 @@ len(temp_items)
 
 
 
-temp_items=[]
+#temp_items=[]
 
-search_term='University'
+#search_term='University'
 
-search_term=search_term.lower()
-for item in db.metadata.find({ "full_text_lower" : {'$regex':'.*'+search_term+'.*'}}):
-    print(item)
-    temp_items.append(item)
+#search_term=search_term.lower()
+#for item in db.metadata.find({ "full_text_lower" : {'$regex':'.*'+search_term+'.*'}}):
+#    print(item)
+#    temp_items.append(item)
 
-len(temp_items)
-
-
+#len(temp_items)
 
 
 
 
 
 
-db.metadata.ensure_index(
-    [
-        ('pbcoreAnnotation.organization', 'text')
-    ],
-    name="search_index"
-)
+
+
+#db.metadata.ensure_index(
+#    [
+#        ('pbcoreAnnotation.organization', 'text')
+#    ],
+#    name="search_index"
+#)
 
 
 
 
-SEARCH_LIMIT=1000
-query=search_term
-text_results = db.command('text', metadata, search=query, limit=SEARCH_LIMIT)
+#SEARCH_LIMIT=1000
+#query=search_term
+#text_results = db.command('text', metadata, search=query, limit=SEARCH_LIMIT)
