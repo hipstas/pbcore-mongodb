@@ -21,8 +21,8 @@ docker ps -a
 
 Find the image name `pbcoremongodb_web`. Copy the alphanumeric ID in the column to to left, under `CONTAINER ID`.
 
-Swap in that ID in the command below to launch an interactive session in your running image.
+Swap in that ID in the command below to launch a shell session in your running Docker image.
 
 ```
-docker exec -ti  y0ur1Dh3re  /bin/bash
+docker exec -ti y0ur1Dh3re  /bin/bash
 ```
