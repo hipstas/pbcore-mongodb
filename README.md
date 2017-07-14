@@ -19,8 +19,6 @@ docker-compose up -d
 docker ps -a
 ```
 
-The last command above will
-
 Find the image name `pbcoremongodb_web`. Copy the alphanumeric ID in the column to to left, under `CONTAINER ID`.
 
 Swap in that ID in the command below to launch an interactive session in your running image.
