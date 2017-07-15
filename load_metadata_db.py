@@ -46,7 +46,7 @@ def merge_dicts(list_of_dicts,parent):
     if type(list_of_dicts)==dict:
         list_of_dicts = [list_of_dicts]
     if type(list_of_dicts)==None:
-            return result
+        return result
     try:
         if len(list_of_dicts)==0:
             return result
@@ -92,7 +92,7 @@ def merge_dicts(list_of_dicts,parent):
 import random
 
 db.metadata.drop()
-sample_paths=random.sample(pbcore_paths,100)
+sample_paths=pbcore_paths #random.sample(pbcore_paths,100)
 
 for xml_path in sample_paths: #### undo this
     json_data = xmltodict.parse(open(xml_path).read())
