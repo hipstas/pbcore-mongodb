@@ -5,3 +5,5 @@ setuptools
 #Jinja2
 unicodecsv
 xmltodict
+jupyter
+pandas

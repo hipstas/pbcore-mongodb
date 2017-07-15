@@ -6,9 +6,12 @@ services:
         tty: true
         ports:
             - "8881:8881"
+            - "8882:8882"
         depends_on:
             - mongo
+        container_name: pbcore_web
     mongo:
         image: mongo:3.4.0
         ports:
             - "27017:27017"
+        container_name: pbcore_db

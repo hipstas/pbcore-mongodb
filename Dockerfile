@@ -4,9 +4,6 @@ FROM ubuntu:14.04
 
 MAINTAINER Steve McLaughlin <stephen.mclaughlin@utexas.edu>
 
-EXPOSE 8881
-EXPOSE 27017
-
 ENV SHELL /bin/bash
 ENV PYTHONWARNINGS="ignore:a true SSLContext object"
 
@@ -40,6 +37,10 @@ RUN pip install -qr /var/local/requirements.txt
 #COPY ./wsgi.py /home/
 COPY ./load_metadata_db.py /home/
 
+EXPOSE 8881
+EXPOSE 8882
+EXPOSE 27017
 
 WORKDIR /home/
 #CMD ["bash","/var/local/setup.sh"]
+CMD jupyter notebook --ip 0.0.0.0 --port=8882 --no-browser --allow-root --NotebookApp.iopub_data_rate_limit=1.0e10 --NotebookApp.token=''
